@@ -1,6 +1,7 @@
 FROM nginx:1.13.3
 
 # to help docker debugging
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && apt-get -y install vim curl gnupg2 git jq
 
 # nodejs instalation used for startup scripts

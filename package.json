@@ -1,0 +1,21 @@
+{
+  "name": "ehrhard",
+  "version": "1.0.0",
+  "description": "web server for istex doc",
+  "dependencies": {
+    "gitbook": "^4.0.0-alpha.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "docker:web-server": "nginx -g 'daemon off;'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas88100/ezmaster-gitbook.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomas88100/ezmaster-gitbook/issues"
+  },
+  "homepage": "https://github.com/thomas88100/ezmaster-gitbook#readme"
+}

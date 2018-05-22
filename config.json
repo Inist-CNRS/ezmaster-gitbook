@@ -1,4 +1,4 @@
 {
     "GITHUB_URL": "https://github.com/istex/istex-web-doc.git",
-    "BUILD_EACH_NBMINUTES": 20
+    "BUILD_EACH_NBMINUTES": 1
 }

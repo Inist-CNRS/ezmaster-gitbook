@@ -1,21 +1,17 @@
 {
-  "name": "ehrhard",
+  "name": "ezmaster-gitbook",
   "version": "1.0.0",
-  "description": "web server for istex doc",
-  "dependencies": {
-    "gitbook": "^4.0.0-alpha.6"
-  },
+  "description": "web server to deploy istex doc with gitbook",
+  "dependencies": {},
   "devDependencies": {},
-  "scripts": {
-    "docker:web-server": "nginx -g 'daemon off;'"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomas88100/ezmaster-gitbook.git"
+    "url": "git+https://github.com/Inist-CNRS/ezmaster-gitbook.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thomas88100/ezmaster-gitbook/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/thomas88100/ezmaster-gitbook#readme"
+  "homepage": "https://github.com/Inist-CNRS/ezmaster-gitbook.git#readme"
 }

@@ -11,8 +11,8 @@ do
     then
         echo "Doc already up-to-date"
     else
-        echo "ongoing update"
-        gitbook build
+        echo "Ongoing update"
+        gitbook build . --gitbook=3.2.3
     fi
     echo "Waiting $BUILD_EACH_NBMINUTES minutes before next verification."
     sleep ${BUILD_EACH_NBMINUTES}m

@@ -1,7 +1,7 @@
 {
   "name": "ezmaster-gitbook",
   "version": "1.0.0",
-  "description": "web server to deploy istex doc with gitbook",
+  "description": "Web server to deploy gitbook formatted documentation",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {},

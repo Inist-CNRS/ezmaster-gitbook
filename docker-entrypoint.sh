@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # inject config.json parameters to env
 # only if not already defined in env
 export GITHUB_URL=${GITHUB_URL:=$(jq -r -M .GITHUB_URL /config.json | grep -v null)}

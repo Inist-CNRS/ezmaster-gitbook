@@ -25,4 +25,14 @@ RUN chmod +x /usr/local/bin/pull_build.periodically.sh
 # nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# ezmasterization of refgpec
+# see https://github.com/Inist-CNRS/ezmaster-gitbook
+# notice: httpPort is useless here but as ezmaster require it (v3.8.1) we just add a wrong port number
+RUN echo '{ \
+  "httpPort": 8080, \
+  "configPath": "/config.json", \
+  "configType": "json", \
+  "dataPath": "/app/src/_book" \
+}' > /etc/ezmaster.json
+
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

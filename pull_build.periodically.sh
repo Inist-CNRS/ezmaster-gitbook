@@ -1,6 +1,9 @@
 #!/bin/bash
 
-git clone --verbose --progress ${GITHUB_URL} /app/src
+if [ ! -d "/app/src/.git" ];then
+    git clone --verbose --progress ${GITHUB_URL} /app/src
+fi
+
 cd /app/src/
 gitbook build . --gitbook=3.2.3
 while true

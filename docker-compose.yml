@@ -1,0 +1,17 @@
+version: '3'
+services:
+    gitbook:
+
+        container_name: gitbook
+        image: gitbook:1.0.0
+
+        environment:
+            - HTTP_PROXY=${http_proxy}
+            - HTTPS_PROXY=${https_proxy}
+            - DEBUG=1
+
+        ports:
+            - "8080:80"
+
+        volumes:
+            - ./dev:/app/src

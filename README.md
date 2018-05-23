@@ -1,2 +1,2 @@
 # ezmaster-gitbook
-Gitbook for EzMaster
+Gitbook for EzMaster.

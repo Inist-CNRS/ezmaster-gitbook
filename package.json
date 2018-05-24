@@ -1,11 +1,11 @@
 {
   "name": "ezmaster-gitbook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web server to deploy gitbook formatted documentation",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-      "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",

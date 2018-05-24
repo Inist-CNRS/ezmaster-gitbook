@@ -4,7 +4,9 @@
   "description": "Web server to deploy gitbook formatted documentation",
   "dependencies": {},
   "devDependencies": {},
-  "scripts": {},
+  "scripts": {
+      "postversion": "git push && git push --tags"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Inist-CNRS/ezmaster-gitbook.git"

@@ -20,7 +20,7 @@ before_install:
   - sleep 120 ; docker-compose logs
 script:
   - docker-compose ps
-  # just test there is 5 running containers, that is not a lot but that's already it!
+  # just test there is 1 running containers
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
 notifications:

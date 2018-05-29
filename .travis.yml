@@ -27,4 +27,4 @@ script:
       - exit
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
-  - test $INDEXPRESENT = index.html
+  - test $INDEXPRESENT = index.html 

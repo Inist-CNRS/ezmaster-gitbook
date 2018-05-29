@@ -21,6 +21,6 @@ before_install:
 script:
   - docker-compose ps
   # test there is 1 running containers
-  - INDEXPRESENT=$(ls "/app/src/_book/index.html")
+  - INDEXPRESENT=$(ls index.html)
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1 && $INDEXPRESENT = "index.html"

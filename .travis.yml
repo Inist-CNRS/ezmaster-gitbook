@@ -22,8 +22,9 @@ script:
   - docker-compose ps
   # test there is 1 running containers and that index.html is created
   - docker exec -it gitbook bash
-  - INDEXPRESENT=$(cd src/_book/ && ls index.html)
-  - exit
+  script:
+      - INDEXPRESENT=$(cd src/_book/ && ls index.html)
+      - exit
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
   - test $INDEXPRESENT = index.html

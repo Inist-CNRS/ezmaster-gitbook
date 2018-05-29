@@ -20,8 +20,7 @@ before_install:
   - sleep 120 ; docker-compose logs
 script:
   - docker-compose ps
-  # just test there is 1 running containers
+  # test there is 1 running containers
+  - INDEXPRESENT=$(ls "/app/src/_book/index.html")
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
-  - test $NB_CONTAINERS = 1
-notifications:
-slack: 'inist-dpi:53Jp5iUZeRidSGZn0TukMSKo#activity'
+  - test $NB_CONTAINERS = 1 && $INDEXPRESENT = "index.html"

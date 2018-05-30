@@ -25,4 +25,4 @@ script:
   - INDEXPRESENT=$(echo $?)
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
-  - test $INDEXPRESENT = 0
+  - test $INDEXPRESENT -eq 0

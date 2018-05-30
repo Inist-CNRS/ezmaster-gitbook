@@ -21,8 +21,7 @@ before_install:
 script:
   - docker-compose ps
   # test there is 1 running containers and that index.html is created
-  - docker exec -it gitbook ls src/_book/index.html
-  - INDEXPRESENT=$(echo $?)
+  - $NB_FILE_HTML=$(docker exec -it gitbook ls src/_book/*.html | wc -l)
   - NB_CONTAINERS=$(docker-compose ps | grep " Up " | wc -l)
   - test $NB_CONTAINERS = 1
-  - test $INDEXPRESENT -eq 0
+  - test $NB_FILE_HTML -gt 0

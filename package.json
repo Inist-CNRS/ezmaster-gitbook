@@ -2,9 +2,23 @@
   "name": "ezmaster-gitbook",
   "version": "1.0.2",
   "description": "Web server to deploy gitbook formatted documentation",
-  "dependencies": {},
+  "dependencies": {
+    "gitbook-cli": "^2.3.2",
+    "npm-watch": "^0.3.0"
+  },
   "devDependencies": {},
+  "watch": {
+    "buildGitbook": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "*",
+      "ignore": "src/_book"
+    }
+  },
   "scripts": {
+    "buildGitbook": "gitbook build dev/",
+    "watch": "npm-watch",
     "postversion": "git push && git push --tags"
   },
   "repository": {

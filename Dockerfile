@@ -13,6 +13,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY ./package.json /app/package.json
 
+RUN npm install npm-watch -g
 RUN npm install gitbook-cli@2.3.2 -g
 
 #ENTRYPOINT

@@ -3,15 +3,16 @@ services:
     gitbook:
 
         container_name: gitbook
-        image: gitbook:1.0.0
+        image: gitbook
+
+        working_dir: /app/src
 
         environment:
-            - HTTP_PROXY=${http_proxy}
-            - HTTPS_PROXY=${https_proxy}
-            - DEBUG=1
+            - HTTP_PROXY
+            - HTTPS_PROXY
+            - GITHUB_URL
+            - BUILD_EACH_NBMINUTES
+            - DEBUG
 
         ports:
             - "8080:80"
-
-        volumes:
-            - ./dev:/app/src

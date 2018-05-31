@@ -1,23 +1,29 @@
 version: '3'
 services:
-    gitbook:
+    ezmaster-gitbook:
 
-        container_name: gitbook
+        container_name: ezmaster-gitbook
         build:
             context: .
             args:
                 - http_proxy
                 - https_proxy
 
-        image: gitbook:1.0.0
+        image: ezmaster-gitbook:1.0.0
+
+        working_dir: /app/src
 
         environment:
-            - HTTP_PROXY=${http_proxy}
-            - HTTPS_PROXY=${https_proxy}
-            - DEBUG=1
+            - HTTP_PROXY
+            - HTTPS_PROXY
+            - GITHUB_URL
+            - BUILD_EACH_NBMINUTES
+            - DEBUG
 
         ports:
             - "8080:80"
 
         volumes:
-            - ./dev:/app/src
+            - .:/app
+
+        command: bash -c "npm run watch"

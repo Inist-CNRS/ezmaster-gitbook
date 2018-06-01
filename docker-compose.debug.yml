@@ -19,6 +19,8 @@ services:
             - GITHUB_URL
             - BUILD_EACH_NBMINUTES
             - GITBOOK_DEBUG=1
+            - USERID
+            - GROUPID
 
         ports:
             - "8080:80"

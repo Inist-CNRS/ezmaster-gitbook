@@ -33,8 +33,7 @@ stop-prod: ## stop ezmaster-gitbook production daemon
 	@docker-compose -f ./docker-compose.yml stop
 
 run-debug: ## run ezmaster-gitbook in debug mode
-	@docker-compose -f ./docker-compose.debug.yml up -d
-	@sleep 8
+	@USERID=$$(id -u) GROUPID=$$(id -g) docker-compose -f ./docker-compose.debug.yml up
 	@docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app
 	@docker attach ezmaster-gitbook
 

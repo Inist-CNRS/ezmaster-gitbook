@@ -17,7 +17,7 @@
     }
   },
   "scripts": {
-    "buildGitbook": "gitbook build dev/",
+    "buildGitbook": "gitbook install && gitbook build src/",
     "watch": "npm-watch",
     "postversion": "git push && git push --tags"
   },

@@ -18,12 +18,10 @@ services:
             - HTTPS_PROXY
             - GITHUB_URL
             - BUILD_EACH_NBMINUTES
-            - DEBUG
+            - GITBOOK_DEBUG=1
 
         ports:
             - "8080:80"
 
         volumes:
             - .:/app
-
-        command: bash -c "npm run watch"

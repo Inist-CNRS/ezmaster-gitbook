@@ -1,9 +1,9 @@
 version: '3'
 services:
-    gitbook:
+    ezmaster-gitbook:
 
-        container_name: gitbook
-        image: gitbook
+        container_name: ezmaster-gitbook
+        image: ezmaster-gitbook:1.0.0
 
         working_dir: /app/src
 
@@ -12,7 +12,7 @@ services:
             - HTTPS_PROXY
             - GITHUB_URL
             - BUILD_EACH_NBMINUTES
-            - DEBUG
+            - GITBOOK_DEBUG=0
 
         ports:
             - "8080:80"

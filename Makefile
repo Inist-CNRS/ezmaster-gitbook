@@ -34,7 +34,7 @@ stop-prod: ## stop ezmaster-gitbook production daemon
 
 run-debug: ## run ezmaster-gitbook in debug mode
 	@docker-compose -f ./docker-compose.debug.yml up -d
-	@sleep 10
+	@sleep 8
 	@docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app
 	@docker attach ezmaster-gitbook
 
@@ -45,7 +45,7 @@ rm: ## remove ezmaster-gitbook containers even if they are running
 	@docker-compose -f ./docker-compose.debug.yml rm -f
 
 chown: ## makefile rule used to keep current user's unix rights on the docker mounted files
-	@test ! -d $$(pwd)/node_modules || docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app
+	@test ! -d $$(pwd)/node_modules || docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app/
 
 npm: ## npm wrapper. example: make npm install --save mongodb-querystring
 	@docker run -it --rm -v $$(pwd):/app -w /app --net=host -e NODE_ENV -e http_proxy -e https_proxy node:10.0.0 npm $(filter-out $@,$(MAKECMDGOALS))

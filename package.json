@@ -17,7 +17,7 @@
     }
   },
   "scripts": {
-    "buildGitbook": "gitbook install && gitbook build src/ && chown -R $USERID:$GROUPID src/_book",
+    "buildGitbook": "cd src && gitbook install && gitbook build && chown -R $USERID:$GROUPID _book",
     "watch": "npm-watch",
     "postversion": "git push && git push --tags"
   },

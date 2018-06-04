@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ ! -d "/app/src/.git" ];then
-    ls
     git clone --verbose --progress ${GITHUB_URL} /app/src
 fi
 
 cd /app/src/
+ls
 gitbook install
 gitbook build . --gitbook=3.2.3
 chown -R $USERID:$GROUPID /app

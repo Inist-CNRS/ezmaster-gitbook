@@ -4,17 +4,18 @@ if [ ! -d "/app/src/.git" ];then
     git clone --verbose --progress ${GITHUB_URL} /app/src
 fi
 
-cd /app/src/
-echo "Intérieur du dossier"
-ls
-gitbook install
-gitbook build . --gitbook=3.2.3
-chown -R $USERID:$GROUPID /app
 if [ $GITBOOK_DEBUG -eq 1 ]
 then
+    cd /app/src/
+    gitbook install
+    gitbook build . --gitbook=3.2.3
+    chown -R $USERID:$GROUPID /app
     cd ..
     npm run watch
 else
+    cd /app/src/
+    gitbook install
+    gitbook build . --gitbook=3.2.3
     while true
     do
         stdout=$(git pull 2>&1)
@@ -24,7 +25,6 @@ else
         else
             echo "Ongoing update"
             gitbook build . --gitbook=3.2.3
-            chown -R $USERID:$GROUPID /app
         fi
 
         echo "Waiting $BUILD_EACH_NBMINUTES minutes before next verification."

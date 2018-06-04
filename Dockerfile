@@ -32,7 +32,7 @@ RUN echo '{ \
   "httpPort": 80, \
   "configPath": "/config.json", \
   "configType": "json", \
-  "dataPath": "/app/src/_book" \
+  "dataPath": "/app/src/" \
 }' > /etc/ezmaster.json
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

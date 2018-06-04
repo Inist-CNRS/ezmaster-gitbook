@@ -5,6 +5,7 @@ if [ ! -d "/app/src/.git" ];then
 fi
 
 cd /app/src/
+echo "Intérieur du dossier"
 ls
 gitbook install
 gitbook build . --gitbook=3.2.3

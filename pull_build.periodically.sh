@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [ ! -d "/app/src/.git" ];then
+    ls
     git clone --verbose --progress ${GITHUB_URL} /app/src
 fi
 

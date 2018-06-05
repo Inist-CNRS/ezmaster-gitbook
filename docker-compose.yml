@@ -12,7 +12,6 @@ services:
             - HTTPS_PROXY
             - GITHUB_URL
             - BUILD_EACH_NBMINUTES
-            - GITBOOK_DEBUG=0
 
         ports:
             - "8080:80"

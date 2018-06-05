@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -d "/app/src/.git" ];then
+if [[ ! -d "/app/src/.git" ]];then
     git clone --verbose --progress ${GITHUB_URL} /app/src
 fi
 
-if [ $GITBOOK_DEBUG -eq 1 ]
+if [[ $GITBOOK_DEBUG -eq 1 ]]
 then
     cd /app/src/
     gitbook install
@@ -18,6 +18,7 @@ else
     gitbook build . --gitbook=3.2.3
     while true
     do
+        git reset --hard HEAD
         stdout=$(git pull 2>&1)
         if [ "$stdout" == "Already up-to-date." ]
         then

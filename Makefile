@@ -9,10 +9,10 @@ help:
 SUPPORTED_COMMANDS := version
 SUPPORTS_MAKE_ARGS := $(findstring $(firstword $(MAKECMDGOALS)), $(SUPPORTED_COMMANDS))
 ifneq "$(SUPPORTS_MAKE_ARGS)" ""
-	# use the rest as arguments for the command
-	COMMAND_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-	# ...and turn them into do-nothing targets
-	$(eval $(COMMAND_ARGS):;@:)
+  # use the rest as arguments for the command
+  COMMAND_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(COMMAND_ARGS):;@:)
 endif
 
 
@@ -32,8 +32,8 @@ start-prod: ## start ezmaster-gitbook production daemon (needs a first run-prod 
 stop-prod: ## stop ezmaster-gitbook production daemon
 	@docker-compose -f ./docker-compose.yml stop
 
-run-debug: ## run ezmaster-gitbook in debug mode
-	@USERID=$$(id -u) GROUPID=$$(id -g) docker-compose -f ./docker-compose.debug.yml up -d
+run-debug: ## run ezmaster-gitbook in debug mode and pass the url repository with GITHUB_URL="name"
+	@USERID=$$(id -u) GROUPID=$$(id -g) GITHUB_URL=${GITHUB_URL} docker-compose -f ./docker-compose.debug.yml up -d
 	@docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app
 	@docker attach ezmaster-gitbook
 

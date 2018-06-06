@@ -19,6 +19,10 @@
   "scripts": {
     "build-gitbook": "cd src && gitbook install && gitbook build && chown -R $USERID:$GROUPID _book",
     "watch": "npm-watch",
+    "insertversion:readme": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
+    "insertversion:makefile": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" Makefile",
+    "insertversion:docker": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" docker-compose*.yml",
+    "version": "npm run insertversion:readme && npm run insertversion:makefile && git add README.md Makefile",
     "postversion": "git push && git push --tags"
   },
   "repository": {

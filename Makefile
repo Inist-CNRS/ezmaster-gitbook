@@ -24,7 +24,7 @@ build: ## build the docker inistcnrs/ezmaster images localy
 	@docker-compose -f ./docker-compose.yml build
 
 run-prod: ## run ezmaster-gitbook in production mode
-	@docker-compose -f ./docker-compose.yml up -d
+	@GITHUB_URL=${GITHUB_URL} docker-compose -f ./docker-compose.yml up
 
 start-prod: ## start ezmaster-gitbook production daemon (needs a first run-prod the first time)
 	@docker-compose -f ./docker-compose.yml start

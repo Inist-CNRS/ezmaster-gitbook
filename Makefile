@@ -5,17 +5,6 @@
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-# If the first argument is one of the supported commands...
-SUPPORTED_COMMANDS := version
-SUPPORTS_MAKE_ARGS := $(findstring $(firstword $(MAKECMDGOALS)), $(SUPPORTED_COMMANDS))
-ifneq "$(SUPPORTS_MAKE_ARGS)" ""
-  # use the rest as arguments for the command
-  COMMAND_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  # ...and turn them into do-nothing targets
-  $(eval $(COMMAND_ARGS):;@:)
-endif
-
-
 install: ## install dependencies thanks to a dockerized npm install
 	@docker run -it --rm -v $$(pwd):/app -w /app --net=host -e NODE_ENV -e http_proxy -e https_proxy node:10.0.0 npm install --unsafe-perm
 	@make chown
@@ -34,7 +23,6 @@ stop-prod: ## stop ezmaster-gitbook production daemon
 
 run-debug: ## run ezmaster-gitbook in debug mode and pass the url repository with GITHUB_URL="name"
 	@USERID=$$(id -u) GROUPID=$$(id -g) GITHUB_URL=${GITHUB_URL} docker-compose -f ./docker-compose.debug.yml up -d
-	@docker run -it --rm -v $$(pwd):/app node:10.0.0 chown -R $$(id -u):$$(id -g) /app
 	@docker attach ezmaster-gitbook
 
 kill: ## kill ezmaster-gitbook running containers
@@ -52,11 +40,3 @@ npm: ## npm wrapper. example: make npm install --save mongodb-querystring
 
 clean: ## remove node_modules and temp files
 	@rm -Rf ./node_modules/ ./npm-debug.log
-
-version: ## creates a new ezmaster-gitbook version (same way npm version works)
-ifdef COMMAND_ARGS
-	@npm version $(COMMAND_ARGS)
-else
-	@echo "Usage: make version <arg> (same as npm syntax)"
-	@npm version --help
-endif

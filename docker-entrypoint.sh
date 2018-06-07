@@ -6,6 +6,9 @@ export GITHUB_URL=${GITHUB_URL:=$(jq -r -M .GITHUB_URL /config.json | grep -v nu
 export BUILD_EACH_NBMINUTES=${BUILD_EACH_NBMINUTES:=$(jq -r -M .BUILD_EACH_NBMINUTES /config.json | grep -v null)}
 
 # data recovery
-pull_build.periodically.sh &
+pull.periodically.sh &
+
+# watcher
+watcher.sh &
 
 exec nginx -g 'daemon off;'

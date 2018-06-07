@@ -2,7 +2,7 @@ FROM nginx:1.13.12
 
 # to help docker debugging
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -y update && apt-get -y install vim curl gnupg2 git jq
+RUN apt-get -y update && apt-get -y install vim curl gnupg2 git jq procps
 
 # nodejs instalation used for startup scripts
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -20,8 +20,10 @@ RUN npm install gitbook-cli@2.3.2 -g
 COPY config.json /
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-COPY pull_build.periodically.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/pull_build.periodically.sh
+COPY pull.periodically.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/pull.periodically.sh
+COPY watcher.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/watcher.sh
 
 # nginx config
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -19,9 +19,9 @@
   "scripts": {
     "build-gitbook": "cd /app/src && gitbook install && gitbook build",
     "watch": "npm-watch",
-    "insertversion:readme": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
-    "insertversion:makefile": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" Makefile",
-    "insertversion:docker": "sed -i \"s#\\(inistcnrs/ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" docker-compose*.yml",
+    "insertversion:readme": "sed -i \"s#\\(ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
+    "insertversion:makefile": "sed -i \"s#\\(ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" Makefile",
+    "insertversion:docker": "sed -i \"s#\\(ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" docker-compose*.yml",
     "version": "npm run insertversion:readme && npm run insertversion:makefile && npm run insertversion:docker && git add README.md Makefile docker-compose.debug.yml docker-compose.yml",
     "postversion": "git push && git push --tags"
   },

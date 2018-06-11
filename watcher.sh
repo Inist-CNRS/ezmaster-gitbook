@@ -1,2 +1,2 @@
 cd /app
-npm run watch
+exec npm run watch

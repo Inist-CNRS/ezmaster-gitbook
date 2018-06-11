@@ -13,7 +13,7 @@ build: ## build the docker inistcnrs/ezmaster images localy
 	@docker-compose -f ./docker-compose.yml build
 
 run-prod: ## run ezmaster-gitbook in production mode
-	@GITHUB_URL=${GITHUB_URL} docker-compose -f ./docker-compose.yml up
+	@docker-compose -f ./docker-compose.yml up
 
 start-prod: ## start ezmaster-gitbook production daemon (needs a first run-prod the first time)
 	@docker-compose -f ./docker-compose.yml start
@@ -22,7 +22,7 @@ stop-prod: ## stop ezmaster-gitbook production daemon
 	@docker-compose -f ./docker-compose.yml stop
 
 run-debug: ## run ezmaster-gitbook in debug mode and pass the url repository with GITHUB_URL="name"
-	@USERID=$$(id -u) GROUPID=$$(id -g) GITHUB_URL=${GITHUB_URL} docker-compose -f ./docker-compose.debug.yml up -d
+	@USERID=$$(id -u) GROUPID=$$(id -g) docker-compose -f ./docker-compose.debug.yml up -d
 	@docker attach ezmaster-gitbook
 
 kill: ## kill ezmaster-gitbook running containers

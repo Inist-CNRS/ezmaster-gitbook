@@ -5,10 +5,11 @@
 export GITHUB_URL=${GITHUB_URL:=$(jq -r -M .GITHUB_URL /config.json | grep -v null)}
 export BUILD_EACH_NBMINUTES=${BUILD_EACH_NBMINUTES:=$(jq -r -M .BUILD_EACH_NBMINUTES /config.json | grep -v null)}
 
-# data recovery
+# pull periodically to check if there are some doc modifications
+# if this happens, the watcher take the lead
 pull.periodically.sh &
 
-# watcher
+# a watcher that build if they are any changes
 watcher.sh &
 
 exec nginx -g 'daemon off;'

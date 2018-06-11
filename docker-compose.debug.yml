@@ -9,7 +9,7 @@ services:
                 - http_proxy
                 - https_proxy
 
-        image: ezmaster-gitbook:1.0.0
+        image: ezmaster-gitbook:1.0.8
 
         working_dir: /app/src
 

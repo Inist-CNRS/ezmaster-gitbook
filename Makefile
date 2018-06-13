@@ -10,7 +10,7 @@ install: ## install dependencies thanks to a dockerized npm install
 	@make chown
 
 build: ## build the docker inistcnrs/ezmaster images localy
-	@docker-compose -f ./docker-compose.yml build
+	@docker build --tag=ezmaster-gitbook:1.0.8 --build-arg=http_proxy --build-arg=https_proxy .
 
 run-prod: ## run ezmaster-gitbook in production mode
 	@docker-compose -f ./docker-compose.yml up

@@ -14,8 +14,8 @@ git clone https://github.com/Inist-CNRS/ezmaster-gitbook.git
 ```
 Vous devrez ensuite définir des variables d'environnement afin que ça fonctionne :
 
-* GITHUB_URL : définit l'URL du repository où se trouve vore documentation
-* BUILD_EACH_NBMINUTES : définit le nombre de minutes entre chaque vérification de mise à jour de votre documentation
+* GITHUB_URL : définit l'URL du repository où se trouve vore documentation (valeur par défaut : https://github.com/istex/istex-doc-gitbook.git)
+* BUILD_EACH_NBMINUTES : définit le nombre de minutes entre chaque vérification de mise à jour de votre documentation (valeur par défaut : 1)
 
 ## Développeur
 
@@ -45,14 +45,13 @@ make run-prod
 
 ### Mode production avec ezmaster
 
-Vous devrez créer un compte DockerHub avec lequel vous allez lier votre repository github. <br>
-Une fois ceci fait, rendez-vous sur ezmaster. <br>
-Vous devrez alors créer une application en précisant le nom puis le numéro de version. <br>
-Ensuite, il faut créer une instance de cette application. <br>
-Pour plus de détails et un tutoriel vidéo sur ezmaster, rendez vous sur : <br>
-https://github.com/Inist-CNRS/ezmaster/blob/master/README.md
+Vous pouvez également mettre en production votre documentation avec ezmaster (cf https://github.com/Inist-CNRS/ezmaster/blob/master/README.md)
 
-Vous pouvez également automatiser la création application/instance en utilisant ezmaster-automaton : <br>
-https://github.com/Inist-CNRS/ezmaster-automaton/blob/master/README.md
+### Mode production avec une URL différente
+
+```
+make build
+GITHUB_URL="votre_url" make run-prod
+```
 
 

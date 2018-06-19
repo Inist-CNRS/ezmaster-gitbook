@@ -1,4 +1,5 @@
 {
+    "SERVER_NAME": "doc.istex.fr",
     "GITHUB_URL": "https://github.com/istex/istex-doc-gitbook.git",
     "BUILD_EACH_NBMINUTES": 1
 }

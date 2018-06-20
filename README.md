@@ -13,7 +13,7 @@ Télécharger ou cloner le repository sur votre ordinateur :
 git clone https://github.com/Inist-CNRS/ezmaster-gitbook.git
 ```
 Vous devrez ensuite définir des variables d'environnement afin que ça fonctionne :
-
+* SERVER_NAME : définit le nom de domaine (valeur par défaut : doc.istex.fr)
 * GITHUB_URL : définit l'URL du repository où se trouve vore documentation (valeur par défaut : https://github.com/istex/istex-doc-gitbook.git)
 * BUILD_EACH_NBMINUTES : définit le nombre de minutes entre chaque vérification de mise à jour de votre documentation (valeur par défaut : 1)
 
@@ -47,11 +47,11 @@ make run-prod
 
 Vous pouvez également mettre en production votre documentation avec ezmaster (cf https://github.com/Inist-CNRS/ezmaster/blob/master/README.md)
 
-### Mode production avec une URL différente
+### Mode production avec une URL différente et un nom de domaine différent
 
 ```
 make build
-GITHUB_URL="votre_url" make run-prod
+SERVER_NAME="nom.de.domaine" GITHUB_URL="votre_url" make run-prod
 ```
 
 

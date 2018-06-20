@@ -2,6 +2,9 @@
 
 if [[ ! -d "/app/src/.git" ]];then
     git clone --verbose --progress ${GITHUB_URL} /app/src
+else
+    rm -rf /app/src/
+    git clone --verbose --progress ${GITHUB_URL} /app/src
 fi
 
 if [[ $GITBOOK_DEBUG -eq 1 ]]

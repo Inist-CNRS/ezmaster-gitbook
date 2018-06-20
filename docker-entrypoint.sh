@@ -7,7 +7,7 @@ export BUILD_EACH_NBMINUTES=${BUILD_EACH_NBMINUTES:=$(jq -r -M .BUILD_EACH_NBMIN
 export SERVER_NAME=${SERVER_NAME:=$(jq -r -M .SERVER_NAME /config.json | grep -v null)}
 
 # Permit to change the server_name in the nginx configuration
-sed "s/\(server_name\) \(.*\)\(;\)$/\1 ${SERVER_NAME}\3/g" nginx.conf
+sed -i "s/\(server_name\) \(.*\)\(;\)$/\1 ${SERVER_NAME}\3/g" nginx.conf
 
 # pull periodically to check if there are some doc modifications
 # if this happens, the watcher take the lead

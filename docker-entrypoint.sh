@@ -9,10 +9,10 @@ export SERVER_NAME=${SERVER_NAME:=$(jq -r -M .SERVER_NAME /config.json | grep -v
 # Permit to change the server_name in the nginx configuration
 if [[ -z "$SERVER_NAME" ]] then;
     sed -i "s/\(server_name\) \($SERVER_NAME\)\(;\)$/\1 localhost\3/g" nginx.conf
-    sed "s/\(server_name_in_redirect\) \([a-zA-Z]\+\\)\(;\)$/\1 off\3/g" nginx.conf
+    sed -i "s/\(server_name_in_redirect\) \([a-zA-Z]\+\\)\(;\)$/\1 off\3/g" nginx.conf
 else
     sed -i "s/\(server_name\) \(.*\)\(;\)$/\1 ${SERVER_NAME}\3/g" nginx.conf
-    sed "s/\(server_name_in_redirect\) \([a-zA-Z]\+\\)\(;\)$/\1 off\3/g" nginx.conf
+    sed -i "s/\(server_name_in_redirect\) \([a-zA-Z]\+\\)\(;\)$/\1 on\3/g" nginx.conf
 fi
 
 # pull periodically to check if there are some doc modifications

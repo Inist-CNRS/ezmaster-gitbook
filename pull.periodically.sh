@@ -1,19 +1,23 @@
 #!/bin/bash
 
-if [[ ! -d "/app/src/.git" ]];then
-    git clone --verbose --progress ${GITHUB_URL} /app/src
-else
-    rm -rf /app/src/
-    git clone --verbose --progress ${GITHUB_URL} /app/src
-fi
-
 if [[ $GITBOOK_DEBUG -eq 1 ]]
 then
+    if [[ ! -d "/app/src/.git" ]];then
+        git clone --verbose --progress ${GITHUB_URL} /app/src
+    fi
+
     echo "######################################################"
     echo "#  DEBUG MODE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   #"
     echo "######################################################"
     chown -R $USERID:$GROUPID /app
 else
+
+    if [[ ! -d "/app/src/.git" ]];then
+        git clone --verbose --progress ${GITHUB_URL} /app/src
+    else
+        rm -rf /app/src/
+        git clone --verbose --progress ${GITHUB_URL} /app/src
+    fi
     echo "######################################################"
     echo "#  PROD MODE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    #"
     echo "######################################################"

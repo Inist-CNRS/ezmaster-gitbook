@@ -22,7 +22,7 @@ pull.periodically.sh &
 
 # a watcher that build if they are any changes
 while true; do
-    if [[ -f /tmp/CloneDebugEffectue ]]; then
+    if [[ -f /tmp/CloneEffectue ]]; then
         break
     fi
 done

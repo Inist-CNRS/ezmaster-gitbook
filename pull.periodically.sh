@@ -43,7 +43,6 @@ else
     else
         rm -rf /app/config
         git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
-        touch /tmp/CloneDebugEffectue
     fi
 
     echo "######################################################"

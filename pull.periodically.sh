@@ -12,7 +12,7 @@ then
     fi
     if [[ ! -d "/app/config/.git" ]];then
         git clone --verbose --progress --template=/tmp/post-clone ${GITHUB_URL_CONFIG} /app/config
-        touch /tmp/CloneDebugEffectue
+        touch /tmp/CloneEffectue
     else
         cd /app/config
         git pull
@@ -39,7 +39,7 @@ else
     fi
     if [[ ! -d "/app/config/.git" ]];then
         git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
-        touch /tmp/CloneDebugEffectue
+        touch /tmp/CloneEffectue
     else
         rm -rf /app/config
         git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config

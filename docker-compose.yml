@@ -3,7 +3,7 @@ services:
     ezmaster-gitbook:
 
         container_name: ezmaster-gitbook
-        image: ezmaster-gitbook:1.1.2
+        image: ezmaster-gitbook:1.1.3
 
         working_dir: /app/src
 

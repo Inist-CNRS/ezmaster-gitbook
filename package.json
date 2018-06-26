@@ -9,15 +9,14 @@
   "devDependencies": {},
   "watch": {
     "build-gitbook": {
-      "patterns": [
-        "/app/src"
-      ],
+      "patterns": "config",
       "extensions": "*",
-      "ignore": "/app/src/_book"
+      "ignore": "src",
+      "ignore": "doc"
     }
   },
   "scripts": {
-    "build-gitbook": "cd /app/src && gitbook install && gitbook build",
+    "build-gitbook": "rsync -avz --exclude=.git /app/doc/ /app/src/ && rsync -avz --exclude=.git --exclude=README.md /app/config/ /app/src/ && cd /app/src && gitbook install && gitbook build",
     "watch": "npm-watch",
     "insertversion:readme": "sed -i \"s#\\(ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" README.md",
     "insertversion:makefile": "sed -i \"s#\\(ezmaster-gitbook:\\)\\([\\.a-z0-9]\\+\\)#\\1${npm_package_version}#g\" Makefile",

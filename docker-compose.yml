@@ -10,7 +10,8 @@ services:
         environment:
             - HTTP_PROXY
             - HTTPS_PROXY
-            - GITHUB_URL
+            - GITHUB_URL_MARKDOWN
+            - GITHUB_URL_CONFIG
             - BUILD_EACH_NBMINUTES
 
         ports:

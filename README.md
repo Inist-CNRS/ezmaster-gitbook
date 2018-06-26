@@ -35,6 +35,11 @@ Puis rendez vous dans le dossier src/ pour modifier votre documentation ou pour 
 
 Ouvrez alors votre navigateur sur http://localhost:8080 pour visualiser votre documentation.
 
+Pour tester avec une autre doc hébergée sur github, tapez ceci (exemple sur la doc de lodex): 
+
+```bash
+GITHUB_URL="https://github.com/Inist-CNRS/lodex-doc" make run-prod
+```
 
 ### Mode production
 Pour installer et lancer en mode production :
@@ -47,11 +52,5 @@ make run-prod
 
 Vous pouvez également mettre en production votre documentation avec ezmaster (cf https://github.com/Inist-CNRS/ezmaster/blob/master/README.md)
 
-### Mode production avec une URL différente et un nom de domaine différent
-
-```
-make build
-SERVER_NAME="nom.de.domaine" GITHUB_URL="votre_url" make run-prod
-```
 
 

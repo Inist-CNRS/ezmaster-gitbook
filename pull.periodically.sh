@@ -9,7 +9,11 @@ then
         git pull
     fi
     if [[ ! -d "/app/config/.git" ]];then
-        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+        if [[ -z "${GITHUB_URL_CONFIG}" ]]; then
+		    mkdir /app/config
+	    else
+	        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+	    fi
         touch /tmp/CloneDone
     else
         cd /app/config
@@ -26,12 +30,9 @@ then
 
 else
 
-    # if [[ ! -d "/app/src/.git" ]];then
-    #     git clone --verbose --progress ${GITHUB_URL} /app/src
-    # else
-    #     rm -rf /app/src/
-    #     git clone --verbose --progress ${GITHUB_URL} /app/src
-    # fi
+    if [[ ! -d "/app/src" ]];then
+        rm -rf /app/src/
+    fi
     if [[ ! -d "/app/doc/.git" ]];then
         git clone --verbose --progress ${GITHUB_URL_MARKDOWN} /app/doc
     else

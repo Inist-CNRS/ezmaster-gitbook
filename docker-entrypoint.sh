@@ -16,13 +16,15 @@ else
     sed -i "s/\(server_name_in_redirect\) \([a-zA-Z]\+\\)\(;\)$/\1 on\3/g" /etc/nginx/nginx.conf
 fi
 
+rm -rf /tmp/CloneDone
+
 # pull periodically to check if there are some doc modifications
 # if this happens, the watcher take the lead
 pull.periodically.sh &
 
 # a watcher that build if they are any changes
 while true; do
-    if [[ -f /tmp/CloneEffectue ]]; then
+    if [[ -f /tmp/CloneDone ]]; then
         break
     fi
 done

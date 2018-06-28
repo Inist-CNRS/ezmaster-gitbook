@@ -1,7 +1,5 @@
 #!/bin/bash
 
-git clone https://github.com/git-hook/post-clone /tmp/post-clone
-
 if [[ $GITBOOK_DEBUG -eq 1 ]]
 then
     if [[ ! -d "/app/doc/.git" ]];then
@@ -11,11 +9,14 @@ then
         git pull
     fi
     if [[ ! -d "/app/config/.git" ]];then
-        git clone --verbose --progress --template=/tmp/post-clone ${GITHUB_URL_CONFIG} /app/config
-        touch /tmp/CloneEffectue
+        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+        touch /tmp/CloneDone
     else
         cd /app/config
         git pull
+
+        # Permit to know when the clone is finished to start the watcher
+	    touch /tmp/CloneDone
     fi
 
     echo "######################################################"
@@ -39,10 +40,21 @@ else
     fi
     if [[ ! -d "/app/config/.git" ]];then
         git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
-        touch /tmp/CloneEffectue
+	    if [[ "$?" != "0" ]];then
+		     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	         echo "!  FATAL ERROR : GIT CLONE FAILED !!!!!!!!!!!!!!!!   !"
+	         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		     mkdir /app/config
+        fi
+        touch /tmp/CloneDone
     else
         rm -rf /app/config
-        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+	    if [[ -z "${GITHUB_URL_CONFIG}" ]]; then
+		    mkdir /app/config
+	    else
+	        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+	    fi
+	    touch /tmp/CloneDone
     fi
 
     echo "######################################################"

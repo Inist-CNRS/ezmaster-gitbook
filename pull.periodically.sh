@@ -30,9 +30,7 @@ then
 
 else
 
-    if [[ -d "/app/src" ]];then
-        rm -rf /app/src/
-    fi
+    rm -rf /app/src/
     if [[ ! -d "/app/doc/.git" ]];then
         git clone --verbose --progress ${GITHUB_URL_MARKDOWN} /app/doc
     else

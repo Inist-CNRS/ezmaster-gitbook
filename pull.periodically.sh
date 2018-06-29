@@ -30,7 +30,7 @@ then
 
 else
 
-    if [[ ! -d "/app/src" ]];then
+    if [[ -d "/app/src" ]];then
         rm -rf /app/src/
     fi
     if [[ ! -d "/app/doc/.git" ]];then

@@ -16,9 +16,6 @@ then
 	    fi
         touch /tmp/CloneDone
     else
-        cd /app/config
-        git pull
-
         # Permit to know when the clone is finished to start the watcher
 	    touch /tmp/CloneDone
     fi
@@ -30,7 +27,7 @@ then
 
 else
 
-    rm -rf /app/src/
+    rm -rf /app/src/*
     if [[ ! -d "/app/doc/.git" ]];then
         git clone --verbose --progress ${GITHUB_URL_MARKDOWN} /app/doc
     else
@@ -38,13 +35,12 @@ else
         git clone --verbose --progress ${GITHUB_URL_MARKDOWN} /app/doc
     fi
     if [[ ! -d "/app/config/.git" ]];then
-        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
-	    if [[ "$?" != "0" ]];then
-		     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	         echo "!  FATAL ERROR : GIT CLONE FAILED !!!!!!!!!!!!!!!!   !"
-	         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-		     mkdir /app/config
-        fi
+        if [[ -z "${GITHUB_URL_CONFIG}" ]]; then
+            echo "Warning: maybe you don't have a config for your doc !"
+		    mkdir /app/config
+	    else
+	        git clone --verbose --progress ${GITHUB_URL_CONFIG} /app/config
+	    fi
         touch /tmp/CloneDone
     else
         rm -rf /app/config

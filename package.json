@@ -9,9 +9,9 @@
   "devDependencies": {},
   "watch": {
     "build-gitbook": {
-      "patterns": "config",
+      "patterns": [ "config", "doc"],
       "extensions": "*",
-      "ignore": "doc"
+      "ignore": "src"
     }
   },
   "scripts": {

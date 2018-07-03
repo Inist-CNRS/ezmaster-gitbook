@@ -25,6 +25,9 @@ RUN chmod +x /usr/local/bin/pull.periodically.sh
 COPY watcher.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/watcher.sh
 
+#Html file creation to indicate the end of the build
+COPY build.html /app/
+
 # nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 

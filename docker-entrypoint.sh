@@ -3,6 +3,7 @@
 # inject config.json parameters to env
 # only if not already defined in env
 export GITHUB_URL_MARKDOWN=${GITHUB_URL_MARKDOWN:=$(jq -r -M .GITHUB_URL_MARKDOWN /config.json | grep -v null)}
+export GITHUB_URL_CONFIG=${GITHUB_URL_CONFIG:=$(jq -r -M .GITHUB_URL_CONFIG /config.json | grep -v null)}
 export BUILD_EACH_NBMINUTES=${BUILD_EACH_NBMINUTES:=$(jq -r -M .BUILD_EACH_NBMINUTES /config.json | grep -v null)}
 export SERVER_NAME=${SERVER_NAME:=$(jq -r -M .SERVER_NAME /config.json | grep -v null)}
 
@@ -27,6 +28,18 @@ while true; do
         break
     fi
 done
+
+ezmaster_gitbook=$(jq -r -M ".version" /app/package.json)
+sed -i "s/\(Ezmaster-gitbook version:\) \(.*\)\(<\/p>\)$/\1 $ezmaster_gitbook\3/g" /app/build.html
+
+gitbook_version=$(gitbook --version | grep "GitBook" | cut -f 3 -d ' ' | head -1)
+sed -i "s/\(GitBook version:\) \(.*\)\(<\/p>\)$/\1 $gitbook_version\3/g" /app/build.html
+
+date_build=$(date +%d-%m-%Y:%H"h"%M)
+sed -i "s/\(Last build date:\) \(.*\)\(<\/p>\)$/\1 $date_build\3/g" /app/build.html
+
+cp -rf /app/build.html /app/src/build.html
+
 watcher.sh &
 
 exec nginx -g 'daemon off;'

@@ -1,7 +1,7 @@
+# ezmaster-gitbook
 
 [![Build Status](https://travis-ci.org/Inist-CNRS/ezmaster-gitbook.png?branch=master)](https://travis-ci.org/Inist-CNRS/ezmaster-gitbook)
-
-# ezmaster-gitbook
+ [![Docker Pulls](https://img.shields.io/docker/pulls/inistcnrs/ezmaster-gitbook.svg)](https://registry.hub.docker.com/u/inistcnrs/ezmaster-gitbook/)
 
 Générateur de documentation GitBook à partir d'un dépôt distant.
 

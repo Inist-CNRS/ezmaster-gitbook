@@ -29,17 +29,6 @@ while true; do
     fi
 done
 
-ezmaster_gitbook=$(jq -r -M ".version" /app/package.json)
-sed -i "s/\(Ezmaster-gitbook version:\) \(.*\)\(<\/p>\)$/\1 $ezmaster_gitbook\3/g" /app/build.html
-
-gitbook_version=$(gitbook --version | grep "GitBook" | cut -f 3 -d ' ' | head -1)
-sed -i "s/\(GitBook version:\) \(.*\)\(<\/p>\)$/\1 $gitbook_version\3/g" /app/build.html
-
-date_build=$(date +%d-%m-%Y:%H"h"%M)
-sed -i "s/\(Last build date:\) \(.*\)\(<\/p>\)$/\1 $date_build\3/g" /app/build.html
-
-cp -rf /app/build.html /app/src/build.html
-
 watcher.sh &
 
 exec nginx -g 'daemon off;'

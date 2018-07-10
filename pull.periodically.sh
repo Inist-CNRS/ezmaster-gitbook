@@ -67,6 +67,16 @@ else
             echo "Doc already up-to-date"
         else
             echo "Ongoing update"
+
+            # Update of build variables
+            ezmaster_gitbook=$(jq -r -M ".version" /app/package.json)
+            sed -i "s/\(Ezmaster-gitbook version:\) \(.*\)\(<\/p>\)$/\1 $ezmaster_gitbook\3/g" /app/build.html
+
+            gitbook_version=$(gitbook --version | grep "GitBook" | cut -f 3 -d ' ' | head -1)
+            sed -i "s/\(GitBook version:\) \(.*\)\(<\/p>\)$/\1 $gitbook_version\3/g" /app/build.html
+
+            date_build_doc=$(date +%d-%m-%Y:%H"h"%M)
+            sed -i "s/\(Last doc update date:\) \(.*\)\(<\/p>\)$/\1 $date_build_doc\3/g" /app/build.html
         fi
 
         # Partie config
@@ -78,7 +88,13 @@ else
             echo "Config already up-to-date"
         else
             echo "Ongoing update"
+
+            # Update of build variables
+            date_build_config=$(date +%d-%m-%Y:%H"h"%M)
+            sed -i "s/\(Last config update date:\) \(.*\)\(<\/p>\)$/\1 $date_build_config\3/g" /app/build.html
         fi
+
+        cp -rf /app/build.html /app/src/build.html
 
         echo "Waiting $BUILD_EACH_NBMINUTES minutes before next verification."
         sleep ${BUILD_EACH_NBMINUTES}m
